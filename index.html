@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Spot — We Run Your Ads. You Grow Your Business.</title>
+
+  <!-- Meta Pixel — replace YOUR_PIXEL_ID -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #050810;
+      --navy-mid:  #0D1426;
+      --navy-card: #111827;
+      --orange:    #FF6B1A;
+      --orange-lt: #FF8C47;
+      --gold:      #F5A623;
+      --white:     #FFFFFF;
+      --light:     #E8EAF0;
+      --muted:     #7B8599;
+      --border:    rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5,8,16,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--white); letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--orange); }
+    .nav-btn {
+      background: var(--orange);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 0.85rem; font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 130px 6% 90px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(255,107,26,0.11) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 40% at 85% 85%, rgba(245,166,35,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 0%, transparent 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,107,26,0.1);
+      border: 1px solid rgba(255,107,26,0.22);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 0.8px; text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; } 50% { opacity:0.3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(130deg, var(--orange), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 38px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 17px 40px;
+      border-radius: 8px;
+      font-size: 1rem; font-weight: 800;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 0 36px rgba(255,107,26,0.28);
+      letter-spacing: -0.2px;
+    }
+    .hero-cta:hover {
+      background: var(--orange-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 0 52px rgba(255,107,26,0.42);
+    }
+
+    .hero-numbers {
+      margin-top: 56px;
+      display: flex; justify-content: center;
+      align-items: center; gap: 36px;
+      flex-wrap: wrap;
+    }
+    .h-num .big {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 900; color: var(--white); line-height: 1;
+    }
+    .h-num .big span { color: var(--orange); }
+    .h-num .small {
+      font-size: 0.72rem; color: var(--muted);
+      font-weight: 500; margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+    .h-divider { width: 1px; height: 40px; background: var(--border); }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 6%; }
+    .sec-tag {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 12px;
+    }
+    .sec-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 900; color: var(--white);
+      letter-spacing: -0.8px; line-height: 1.18;
+      margin-bottom: 14px;
+    }
+    .sec-sub {
+      font-size: 1rem; color: var(--muted);
+      max-width: 500px; line-height: 1.72;
+    }
+    .sec-head { max-width: 1100px; margin: 0 auto 52px; }
+
+    /* ── PROBLEMS ── */
+    .problems { background: var(--navy-mid); }
+    .prob-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .prob-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 26px;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .prob-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .prob-card:hover { border-color: rgba(255,107,26,0.22); transform: translateY(-3px); }
+    .prob-card:hover::after { opacity: 1; }
+    .prob-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .prob-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .prob-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .prob-fix {
+      margin-top: 14px; font-size: 0.82rem;
+      color: var(--orange); font-weight: 600;
+    }
+
+    /* ── WHAT WE DO ── */
+    .services { background: var(--navy); }
+    .svc-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+    .svc-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 38px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .svc-card:hover { border-color: rgba(255,107,26,0.28); transform: translateY(-4px); }
+    .svc-n {
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--orange); letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+    .svc-card h3 { font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .svc-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.72; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .svc-tags span {
+      background: rgba(255,107,26,0.07);
+      border: 1px solid rgba(255,107,26,0.14);
+      color: var(--orange-lt);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 100px;
+    }
+
+    /* ── NUMBERS ── */
+    .numbers { background: var(--navy-mid); }
+    .num-grid {
+      max-width: 1100px; margin: 0 auto 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .num-box {
+      background: var(--navy-card);
+      padding: 38px 24px; text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .num-box:last-child { border-right: none; }
+    .num-box:hover { background: rgba(255,107,26,0.04); }
+    .num-box .val {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 900; color: var(--white); line-height: 1;
+    }
+    .num-box .val span { color: var(--orange); }
+    .num-box .lbl { font-size: 0.75rem; color: var(--muted); margin-top: 7px; font-weight: 500; }
+
+    .cases {
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .case {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      transition: border-color 0.3s;
+    }
+    .case:hover { border-color: rgba(255,107,26,0.22); }
+    .case-tag {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
+    }
+    .case h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .case p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+    .case-nums { display: flex; gap: 24px; margin-top: 18px; }
+    .cn .v { font-size: 1.3rem; font-weight: 800; color: var(--white); }
+    .cn .v span { color: var(--orange); }
+    .cn .k { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--navy); }
+    .steps {
+      max-width: 860px; margin: 0 auto;
+      display: flex; flex-direction: column;
+    }
+    .step {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 24px; position: relative;
+    }
+    .step:not(:last-child) .sn::after {
+      content: '';
+      position: absolute;
+      left: 25px; top: 52px;
+      width: 2px; height: calc(100% - 16px);
+      background: linear-gradient(to bottom, rgba(255,107,26,0.4), transparent);
+    }
+    .sn {
+      position: relative;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,107,26,0.1);
+      border: 1px solid rgba(255,107,26,0.28);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; font-weight: 800; color: var(--orange);
+      flex-shrink: 0;
+    }
+    .sc { padding: 10px 0 48px; }
+    .sc h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .sc p { font-size: 0.88rem; color: var(--muted); line-height: 1.68; }
+
+    /* ── FORM ── */
+    .form-sec { background: var(--navy-mid); }
+    .form-wrap {
+      max-width: 660px; margin: 0 auto;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 52px 48px;
+      position: relative; overflow: hidden;
+    }
+    .form-wrap::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+    }
+    .form-wrap .sec-title { text-align: center; }
+    .form-wrap .sec-sub { text-align: center; margin: 0 auto 36px; }
+
+    form { display: flex; flex-direction: column; gap: 14px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    label {
+      display: flex; flex-direction: column; gap: 6px;
+      font-size: 0.78rem; font-weight: 600; color: var(--light);
+    }
+    input, select, textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 15px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none; width: 100%;
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(255,107,26,0.45);
+      background: rgba(255,107,26,0.03);
+    }
+    select { cursor: pointer; }
+    select option { background: #111827; color: var(--white); }
+    textarea { resize: vertical; min-height: 88px; }
+
+    .sub-btn {
+      background: var(--orange);
+      color: var(--white); border: none;
+      border-radius: 8px; padding: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      cursor: pointer; margin-top: 6px;
+      transition: all 0.25s;
+      box-shadow: 0 0 28px rgba(255,107,26,0.22);
+    }
+    .sub-btn:hover {
+      background: var(--orange-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px rgba(255,107,26,0.38);
+    }
+    .sub-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      text-align: center; font-size: 0.76rem;
+      color: var(--muted); margin-top: 10px;
+    }
+    .form-note span { color: var(--orange); }
+
+    .done { display: none; text-align: center; padding: 40px 10px; }
+    .done .icon { font-size: 3rem; margin-bottom: 16px; }
+    .done h3 { font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .done p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 30px 6%;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+    }
+    footer p { font-size: 0.76rem; color: var(--muted); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.on { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+      .form-wrap { padding: 36px 22px; }
+      .num-grid { grid-template-columns: 1fr 1fr; }
+      .num-box { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-numbers { gap: 18px; }
+      .h-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">The<span>Spot</span></div>
+  <a href="#form" class="nav-btn">Talk to Us — Free</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Meta Ads Agency · Dhaka, Bangladesh
+    </div>
+
+    <h1>
+      You focus on<br/>your business.<br/>
+      <em>We handle your ads.</em>
+    </h1>
+
+    <p class="hero-sub">
+      We run Facebook and Instagram ads for businesses in Bangladesh.
+      No confusing reports. No wasted money. Just real sales — every month.
+    </p>
+
+    <a href="#form" class="hero-cta">Get a Free Talk → </a>
+
+    <div class="hero-numbers">
+      <div class="h-num">
+        <div class="big">$1.4M<span>+</span></div>
+        <div class="small">Ad Money Managed</div>
+      </div>
+      <div class="h-divider"></div>
+      <div class="h-num">
+        <div class="big">990K<span>+</span></div>
+        <div class="small">Products Sold</div>
+      </div>
+      <div class="h-divider"></div>
+      <div class="h-num">
+        <div class="big">9<span>x</span></div>
+        <div class="small">Best Return</div>
+      </div>
+      <div class="h-divider"></div>
+      <div class="h-num">
+        <div class="big"><span>$</span>1.41</div>
+        <div class="small">Avg Cost Per Sale</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PROBLEMS -->
+<section class="problems">
+  <div class="sec-head reveal">
+    <div class="sec-tag">Sound Familiar?</div>
+    <h2 class="sec-title">We hear this a lot.</h2>
+    <p class="sec-sub">Most business owners come to us with the same problems. You are not alone.</p>
+  </div>
+  <div class="prob-grid">
+    <div class="prob-card reveal">
+      <div class="prob-icon">💸</div>
+      <h3>"I spend money on ads but get no sales."</h3>
+      <p>Your budget is going — but nothing is coming back. It feels like throwing money away.</p>
+      <div class="prob-fix">→ We make every taka count.</div>
+    </div>
+    <div class="prob-card reveal">
+      <div class="prob-icon">😕</div>
+      <h3>"I don't know which agency to trust."</h3>
+      <p>Many agencies make big promises. But at the end of the month — no results, no clear numbers.</p>
+      <div class="prob-fix">→ We show you real numbers, always.</div>
+    </div>
+    <div class="prob-card reveal">
+      <div class="prob-icon">😩</div>
+      <h3>"I'm too busy to handle ads myself."</h3>
+      <p>You are running a business. You cannot do everything. Ads need daily work and attention.</p>
+      <div class="prob-fix">→ Give ads to us. Focus on your work.</div>
+    </div>
+    <div class="prob-card reveal">
+      <div class="prob-icon">📉</div>
+      <h3>"Sales are good one month, bad the next."</h3>
+      <p>You can't plan when sales go up and down randomly. You need something you can count on.</p>
+      <div class="prob-fix">→ We build steady, reliable sales.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT WE DO -->
+<section class="services">
+  <div class="sec-head reveal">
+    <div class="sec-tag">What We Do</div>
+    <h2 class="sec-title">Three things.<br/>We do them really well.</h2>
+    <p class="sec-sub">We keep it simple. No extra services. Just what your business actually needs.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-n">01</div>
+      <h3>Run Your Facebook & Instagram Ads</h3>
+      <p>
+        We plan your ads, make them, and run them every day.
+        We watch the numbers closely. When something works, we do more of it.
+        When something doesn't work, we stop it fast.
+        You don't have to touch anything.
+      </p>
+      <div class="svc-tags">
+        <span>Campaign Setup</span>
+        <span>Daily Management</span>
+        <span>Audience Targeting</span>
+        <span>Budget Control</span>
+      </div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">02</div>
+      <h3>Make Ads That People Stop and Watch</h3>
+      <p>
+        A good ad needs to grab attention in 1 second.
+        We make videos and images for your ads that stop people from scrolling —
+        and make them want to buy your product right now.
+      </p>
+      <div class="svc-tags">
+        <span>Video Editing</span>
+        <span>Ad Design</span>
+        <span>Ad Copywriting</span>
+        <span>Hook Strategy</span>
+      </div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-n">03</div>
+      <h3>Monthly Report — Simple and Clear</h3>
+      <p>
+        Every month, you get a simple report.
+        How much you spent. How many sales you got. How much profit you made.
+        No confusing words. No hiding. Just honest numbers.
+      </p>
+      <div class="svc-tags">
+        <span>Simple Reports</span>
+        <span>ROAS Tracking</span>
+        <span>Growth Planning</span>
+        <span>Strategy Calls</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="sec-head reveal">
+    <div class="sec-tag">Our Work</div>
+    <h2 class="sec-title">Numbers don't lie.</h2>
+    <p class="sec-sub">3.5 years. Real businesses. Real results. Here is what we have done.</p>
+  </div>
+
+  <div class="num-grid reveal">
+    <div class="num-box">
+      <div class="val">$1.4M<span>+</span></div>
+      <div class="lbl">Total Ad Money Managed</div>
+    </div>
+    <div class="num-box">
+      <div class="val">990K<span>+</span></div>
+      <div class="lbl">Products Sold for Clients</div>
+    </div>
+    <div class="num-box">
+      <div class="val"><span>$</span>1.41</div>
+      <div class="lbl">Average Cost Per Sale</div>
+    </div>
+    <div class="num-box">
+      <div class="val">9<span>x</span></div>
+      <div class="lbl">Best Return on Ad Spend</div>
+    </div>
+    <div class="num-box">
+      <div class="val">800<span>+</span></div>
+      <div class="lbl">Campaigns We Have Run</div>
+    </div>
+  </div>
+
+  <div class="cases">
+    <div class="case reveal">
+      <div class="case-tag">Germany Life Care</div>
+      <h3>Health Product — Bangladesh Market</h3>
+      <p>We ran Meta ads for their health product every day. Smart targeting + strong creative = consistent sales at low cost.</p>
+      <div class="case-nums">
+        <div class="cn">
+          <div class="v">8<span>x</span></div>
+          <div class="k">Best ROAS</div>
+        </div>
+        <div class="cn">
+          <div class="v"><span>~$</span>2</div>
+          <div class="k">Cost Per Sale</div>
+        </div>
+      </div>
+    </div>
+    <div class="case reveal">
+      <div class="case-tag">AXIOM Jewelry</div>
+      <h3>Jewelry Brand — Video Ad Campaign</h3>
+      <p>We made video ads that showed the product beautifully. People watched, clicked, and bought. Sales went up 3x.</p>
+      <div class="case-nums">
+        <div class="cn">
+          <div class="v">4.5<span>x+</span></div>
+          <div class="k">ROAS</div>
+        </div>
+        <div class="cn">
+          <div class="v">3<span>x</span></div>
+          <div class="k">Sales Growth</div>
+        </div>
+      </div>
+    </div>
+    <div class="case reveal">
+      <div class="case-tag">Pran Latina Juice</div>
+      <h3>FMCG Brand — Video Production</h3>
+      <p>We made a professional video ad for their juice brand. Clean, eye-catching, and built for Facebook and Instagram.</p>
+      <div class="case-nums">
+        <div class="cn">
+          <div class="v">TVC</div>
+          <div class="k">Production</div>
+        </div>
+        <div class="cn">
+          <div class="v">↑</div>
+          <div class="k">Brand Reach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="sec-head reveal">
+    <div class="sec-tag">How It Works</div>
+    <h2 class="sec-title">Simple. Easy. No stress.</h2>
+    <p class="sec-sub">Getting started takes only a few minutes. Here is what happens next.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="sn">1</div>
+      <div class="sc">
+        <h3>Fill the form below — it's free</h3>
+        <p>Tell us your name, your WhatsApp number, and a little about your business. That's it. No payment. No commitment.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="sn">2</div>
+      <div class="sc">
+        <h3>We call you on WhatsApp</h3>
+        <p>Within 24 hours, we will reach out. We listen to your goals and your problems. We ask simple questions. No pressure at all.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="sn">3</div>
+      <div class="sc">
+        <h3>We make a plan just for you</h3>
+        <p>We build a simple plan — what ads to run, who to show them to, and how much to spend. You review it and say yes or no.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="sn">4</div>
+      <div class="sc">
+        <h3>We run the ads. You see sales come in.</h3>
+        <p>We handle everything. You sit back and watch your business grow. Every month you get a clear report — simple numbers, honest results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- LEAD FORM -->
+<section class="form-sec" id="form">
+  <div class="form-wrap reveal">
+    <div class="sec-tag" style="text-align:center">Free Consultation</div>
+    <h2 class="sec-title">Let's talk about your business.</h2>
+    <p class="sec-sub">
+      Fill this form. We will contact you on WhatsApp within 24 hours.
+      No cost. No pressure. Just a friendly chat.
+    </p>
+
+    <form id="leadForm" action="https://formspree.io/YOUR_FORMSPREE_ID" method="POST">
+      <div class="row">
+        <label>
+          Your Name *
+          <input type="text" name="name" placeholder="e.g. Rahim Uddin" required />
+        </label>
+        <label>
+          WhatsApp Number *
+          <input type="tel" name="whatsapp" placeholder="e.g. 01700000000" required />
+        </label>
+      </div>
+      <label>
+        Your Business Name
+        <input type="text" name="business" placeholder="e.g. Rahim's Food Shop" />
+      </label>
+      <label>
+        What kind of business? *
+        <select name="type" required>
+          <option value="" disabled selected>Pick one</option>
+          <option>Food & Drinks (FMCG)</option>
+          <option>Health & Medicine</option>
+          <option>Fashion & Clothing</option>
+          <option>Jewelry & Accessories</option>
+          <option>Online Shop</option>
+          <option>Real Estate</option>
+          <option>Service Business</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>
+        Monthly ad budget? *
+        <select name="budget" required>
+          <option value="" disabled selected>Pick one</option>
+          <option>10,000 – 30,000 BDT</option>
+          <option>30,000 – 50,000 BDT</option>
+          <option>50,000 – 1,00,000 BDT</option>
+          <option>More than 1,00,000 BDT</option>
+        </select>
+      </label>
+      <label>
+        Anything you want to tell us? (optional)
+        <textarea name="message" placeholder="e.g. I sell handmade bags and want more customers..."></textarea>
+      </label>
+      <button type="submit" class="sub-btn" id="submitBtn">
+        Yes, I Want to Talk — It's Free →
+      </button>
+      <p class="form-note">🔒 Your info is <span>100% private</span>. We never share it with anyone.</p>
+    </form>
+
+    <div class="done" id="doneMsg">
+      <div class="icon">✅</div>
+      <h3>We got your message!</h3>
+      <p>We will reach out on WhatsApp within 24 hours.<br/>Talk soon! 🙏</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">The<span>Spot</span></div>
+  <p>© 2026 The Spot Agency — Mirpur, Dhaka, Bangladesh</p>
+  <p>Meta Ads · Creative Production · Growth Strategy</p>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(el => io.observe(el));
+
+  // Form submit
+  const form = document.getElementById('leadForm');
+  const btn  = document.getElementById('submitBtn');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('doneMsg').style.display = 'block';
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
