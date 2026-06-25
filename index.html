@@ -789,7 +789,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
         <div class="section-label" style="justify-content:center">Free Consultation</div>
         <h2 class="section-title">Let's talk about<br/>your business.</h2>
         <p class="section-desc">Fill this in — takes 60 seconds. We will contact you on WhatsApp within 24 hours. No cost. No pressure.</p>
-        <a href="https://tally.so/r/kdgqB6" target="_blank" class="sub-btn" style="display:block;text-align:center;text-decoration:none">Yes, I Want to Talk — It's Free →</a>
+        <iframe data-tally-src="https://tally.so/embed/kdgqB6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form" style="border:none;min-height:400px"></iframe>
         <p class="form-note">🔒 Your info is <span>100% private</span>. We never share it with anyone.</p>
       </div>
     </div>
@@ -1110,6 +1110,8 @@ window.addEventListener('message',function(e){
   }
 });
 </script>
-<script src="https://tally.so/widgets/embed.js" async></script>
+<script>
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+</script>
 </body>
 </html>
