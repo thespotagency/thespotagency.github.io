@@ -74,9 +74,6 @@ body::after{
 ::-webkit-scrollbar-track{background:var(--navy)}
 ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px}
 
-/* ══════════════════════════════
-   NAV
-══════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:0 2.5rem;height:64px;
@@ -104,7 +101,6 @@ nav{
 }
 .nav-cta:hover{background:var(--orange);color:var(--navy)}
 
-/* Hamburger — mobile only */
 .nav-hamburger{
   display:none;flex-direction:column;gap:5px;cursor:pointer;
   background:none;border:none;padding:6px;
@@ -114,7 +110,6 @@ nav{
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* Mobile menu drawer */
 .mobile-menu{
   display:none;position:fixed;top:64px;left:0;right:0;z-index:99;
   background:rgba(5,8,16,0.98);backdrop-filter:blur(20px);
@@ -135,9 +130,6 @@ nav{
   letter-spacing:0.05em;border-bottom:none;
 }
 
-/* ══════════════════════════════
-   LIQUID GLASS CARD
-══════════════════════════════ */
 .lg-card{
   position:relative;isolation:isolate;overflow:hidden;
   border-radius:14px;border:1px solid var(--glass-border);
@@ -172,9 +164,6 @@ nav{
 }
 .lg-card:hover .lg-sweep{transform:scaleX(1)}
 
-/* ══════════════════════════════
-   FLOATING ORBS
-══════════════════════════════ */
 .orb{
   position:fixed;border-radius:50%;
   filter:blur(80px);pointer-events:none;z-index:0;
@@ -188,9 +177,6 @@ nav{
   66%{transform:translate(-20px,30px) scale(0.95)}
 }
 
-/* ══════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════ */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}
@@ -198,9 +184,6 @@ nav{
 .reveal-delay-3{transition-delay:0.3s}
 .reveal-delay-4{transition-delay:0.4s}
 
-/* ══════════════════════════════
-   SHARED SECTION
-══════════════════════════════ */
 section{position:relative;z-index:1;padding:5rem 0}
 .wrapper{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2.5rem}
 .section-label{
@@ -212,9 +195,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .section-desc{font-size:1rem;color:var(--white-60);max-width:520px;margin-bottom:3rem;line-height:1.75}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--glass-border) 30%,var(--glass-border) 70%,transparent);position:relative;z-index:1}
 
-/* ══════════════════════════════
-   BUTTONS
-══════════════════════════════ */
 .btn-primary{
   background:var(--orange);color:var(--navy);border:none;
   padding:14px 28px;border-radius:8px;
@@ -230,9 +210,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .btn-ghost{background:transparent;color:var(--white-60);border:1px solid var(--glass-border);padding:14px 28px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color 0.2s,color 0.2s;display:inline-block}
 .btn-ghost:hover{border-color:var(--white-30);color:var(--white)}
 
-/* ══════════════════════════════
-   HERO
-══════════════════════════════ */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden}
 #shader-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0.55;pointer-events:none}
 .hero-inner{padding:6rem 0 4rem;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;width:100%}
@@ -254,15 +231,11 @@ section{position:relative;z-index:1;padding:5rem 0}
 .stat-val{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--orange);line-height:1;margin-bottom:4px;display:block}
 .stat-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--white-30)}
 
-/* ══════════════════════════════
-   METRICS
-══════════════════════════════ */
 .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-bottom:3rem}
 .metric-item{padding:2rem 1.5rem;text-align:center;cursor:default}
 .metric-num{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--orange);display:block;line-height:1;margin-bottom:6px}
 .metric-desc{font-size:11.5px;color:var(--white-30);text-transform:uppercase;letter-spacing:0.08em;font-weight:500}
 
-/* Case studies */
 .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:2rem}
 .case{padding:2rem;cursor:default}
 .case-badge{display:inline-block;background:var(--orange-dim);border:1px solid rgba(255,107,26,0.25);color:var(--orange);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:50px;padding:4px 12px;margin-bottom:1rem}
@@ -272,9 +245,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .cn .v{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--orange);line-height:1}
 .cn .k{font-size:11px;color:var(--white-30);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
 
-/* ══════════════════════════════
-   PROOF SLIDESHOW
-══════════════════════════════ */
 .slideshow-section{background:transparent;padding:5rem 0}
 .ss-frame{
   position:relative;border-radius:18px;overflow:hidden;
@@ -286,7 +256,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .ss-slide{min-width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:var(--navy)}
 .ss-slide img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
 
-/* Arrows */
 .ss-arrow{
   position:absolute;top:50%;transform:translateY(-50%);z-index:5;
   width:48px;height:48px;border-radius:50%;cursor:pointer;
@@ -302,12 +271,10 @@ section{position:relative;z-index:1;padding:5rem 0}
 .ss-prev{left:16px}
 .ss-next{right:16px}
 
-/* Dots */
 .ss-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:8px;align-items:center}
 .ss-dot{width:9px;height:9px;border-radius:50%;cursor:pointer;border:none;background:rgba(255,255,255,0.25);transition:background 0.25s,width 0.25s;padding:0;-webkit-tap-highlight-color:transparent}
 .ss-dot.active{background:var(--orange);width:26px;border-radius:50px}
 
-/* Slide counter badge */
 .ss-counter{
   position:absolute;top:14px;right:14px;z-index:5;
   background:rgba(5,8,16,0.7);backdrop-filter:blur(8px);
@@ -316,9 +283,6 @@ section{position:relative;z-index:1;padding:5rem 0}
   color:var(--white-60);letter-spacing:0.05em;
 }
 
-/* ══════════════════════════════
-   PROBLEMS
-══════════════════════════════ */
 .prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
 .prob-card{padding:2rem;cursor:default}
 .prob-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
@@ -327,9 +291,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .prob-fix{margin-top:1rem;font-size:12.5px;color:var(--orange);font-weight:600;display:flex;align-items:center;gap:8px}
 .prob-fix::before{content:'';width:16px;height:1px;background:var(--orange);flex-shrink:0}
 
-/* ══════════════════════════════
-   SERVICES
-══════════════════════════════ */
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
 .svc-card{padding:2.5rem 2rem;cursor:default}
 .svc-n{font-size:11px;font-weight:700;color:var(--orange);letter-spacing:2px;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
@@ -339,9 +300,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
 .svc-tags span{background:var(--orange-dim);border:1px solid rgba(255,107,26,0.15);color:var(--orange-lt);font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px}
 
-/* ══════════════════════════════
-   HOW IT WORKS
-══════════════════════════════ */
 .timeline{display:flex;flex-direction:column;max-width:820px;margin:0 auto}
 .timeline-item{display:grid;grid-template-columns:72px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--glass-border);align-items:start}
 .timeline-item:last-child{border-bottom:none}
@@ -350,9 +308,6 @@ section{position:relative;z-index:1;padding:5rem 0}
 .tl-role{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--white);margin-bottom:4px}
 .tl-sub{font-size:13.5px;color:var(--white-60);line-height:1.7}
 
-/* ══════════════════════════════
-   FORM
-══════════════════════════════ */
 .form-outer{max-width:680px;margin:0 auto;position:relative}
 .form-outer::before{content:'';position:absolute;inset:-1px;border-radius:22px;background:linear-gradient(135deg,rgba(255,107,26,0.3),rgba(245,166,35,0.15),transparent,rgba(255,107,26,0.1));z-index:0}
 .form-wrap{position:relative;z-index:1;background:rgba(8,12,26,0.95);border-radius:20px;padding:3.5rem;overflow:hidden}
@@ -382,9 +337,6 @@ textarea{resize:vertical;min-height:90px}
 .done h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.75rem}
 .done p{color:var(--white-60);font-size:0.95rem;line-height:1.7}
 
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
 footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padding:2rem 0}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-left{font-size:13px;color:var(--white-30)}
@@ -393,9 +345,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 .footer-right a{font-size:13px;color:var(--white-30);text-decoration:none;transition:color 0.2s}
 .footer-right a:hover{color:var(--orange)}
 
-/* ══════════════════════════════
-   CREATIVE WORK
-══════════════════════════════ */
 .creative-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
 .creative-card{cursor:pointer;overflow:hidden;border-radius:14px;position:relative;isolation:isolate;border:1px solid var(--glass-border);background:var(--glass-bg);transition:border-color 0.3s,transform 0.4s cubic-bezier(0.175,0.885,0.32,1.6)}
 .creative-card:hover{border-color:var(--glass-border-hover);transform:translateY(-3px)}
@@ -421,21 +370,82 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 #lightboxClose:hover{background:var(--orange);color:var(--navy)}
 
 /* ══════════════════════════════
-   MOBILE — ≤768px
+   ABOUT US
 ══════════════════════════════ */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+  max-width:720px;
+}
+.team-card{overflow:hidden;cursor:default}
+.team-photo{
+  width:100%;aspect-ratio:4/5;overflow:hidden;
+  background:var(--navy-3);position:relative;
+}
+.team-photo img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:top center;display:block;
+  transition:transform 0.5s ease;
+  filter:grayscale(10%);
+}
+.team-card:hover .team-photo img{transform:scale(1.04)}
+.team-photo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,8,16,0.75) 0%,transparent 55%);
+  z-index:1;
+}
+.team-body{padding:1.5rem 1.5rem 1.75rem}
+.team-role{
+  display:inline-block;
+  background:var(--orange-dim);
+  border:1px solid rgba(255,107,26,0.22);
+  color:var(--orange-lt);
+  font-size:10.5px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  border-radius:50px;padding:3px 12px;margin-bottom:0.7rem;
+}
+.team-name{
+  font-family:var(--font-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--white);line-height:1.2;
+  margin-bottom:0.6rem;
+}
+.team-bio{
+  font-size:13.5px;color:var(--white-60);
+  line-height:1.72;margin-bottom:1.1rem;
+}
+.team-divider{
+  height:1px;background:var(--glass-border);margin-bottom:1.1rem;
+}
+.team-stats{display:flex;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.team-stat-val{
+  font-family:var(--font-display);
+  font-size:1.05rem;font-weight:700;
+  color:var(--orange);display:block;line-height:1;
+}
+.team-stat-key{
+  font-size:10px;font-weight:600;
+  color:var(--white-30);text-transform:uppercase;
+  letter-spacing:0.07em;margin-top:3px;
+}
+.team-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;font-weight:600;
+  color:var(--white-30);text-decoration:none;
+  border:1px solid var(--glass-border);
+  border-radius:6px;padding:5px 12px;
+  letter-spacing:0.04em;
+  transition:color 0.2s,border-color 0.2s;
+}
+.team-link:hover{color:var(--orange);border-color:var(--glass-border-hover)}
+
 @media(max-width:768px){
-  /* Nav */
   nav{padding:0 1.25rem}
   .nav-links,.nav-sub,.nav-div,.nav-cta{display:none}
   .nav-hamburger{display:flex}
-
-  /* Wrapper */
   .wrapper{padding:0 1.25rem}
-
-  /* Sections */
   section{padding:4rem 0}
-
-  /* Hero */
   .hero-inner{grid-template-columns:1fr;gap:2.5rem;padding:5rem 0 3rem}
   .hero h1{font-size:clamp(2rem,8vw,2.8rem)}
   .hero-sub{font-size:0.95rem}
@@ -444,37 +454,23 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
   .hero-stats{flex-direction:row;flex-wrap:wrap;gap:0.75rem}
   .stat-card{min-width:0;flex:1 1 calc(50% - 0.375rem);padding:1rem 1rem}
   .stat-val{font-size:1.5rem}
-
-  /* Metrics */
   .metrics-grid{grid-template-columns:1fr 1fr;gap:0.75rem}
   .metric-num{font-size:1.6rem}
-
-  /* Cases */
   .cases{grid-template-columns:1fr}
-
-  /* Slideshow arrows — smaller on mobile */
   .ss-arrow{width:38px;height:38px;font-size:18px}
   .ss-prev{left:8px}
   .ss-next{right:8px}
   .ss-slide{aspect-ratio:4/3}
-
-  /* Problems */
   .prob-grid{grid-template-columns:1fr}
-
-  /* Services */
   .svc-grid{grid-template-columns:1fr}
-
-  /* Timeline */
   .timeline-item{grid-template-columns:60px 1fr;gap:1rem;padding:1.5rem 0}
   .tl-num{width:44px;height:44px;font-size:0.9rem}
-
-  /* Form */
   .form-row{grid-template-columns:1fr}
   .form-wrap{padding:2rem 1.25rem}
-
-  /* Footer */
   .footer-inner{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .footer-right{flex-wrap:wrap;gap:1rem}
+  .team-grid{grid-template-columns:1fr}
+  .creative-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:400px){
@@ -513,6 +509,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
     <li><a href="#results">Results</a></li>
     <li><a href="#how">Process</a></li>
     <li><a href="#creative">Creative</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#form">Contact</a></li>
   </ul>
   <a href="#form" class="nav-cta">Talk to Us — Free</a>
@@ -527,6 +524,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
   <a href="#services" onclick="closeMobileMenu()">Services</a>
   <a href="#results" onclick="closeMobileMenu()">Results</a>
   <a href="#how" onclick="closeMobileMenu()">Process</a>
+  <a href="#creative" onclick="closeMobileMenu()">Creative</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#form" class="mob-cta" onclick="closeMobileMenu()">Talk to Us — Free</a>
 </div>
 
@@ -796,6 +795,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
   </div>
 </section>
 
+<div class="divider"></div>
 
 <!-- ══ CREATIVE WORK ══ -->
 <section id="creative" style="padding:5rem 0">
@@ -853,6 +853,84 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 
 <div class="divider"></div>
 
+<!-- ══ ABOUT US ══ -->
+<section id="about" style="padding:5rem 0">
+  <div class="wrapper">
+    <div class="section-label reveal">The Team</div>
+    <h2 class="section-title reveal reveal-delay-1">The people behind<br/>your results.</h2>
+    <p class="section-desc reveal reveal-delay-2">A small, focused team — not a bloated agency. Every campaign is handled directly by us. No juniors. No handoffs. No excuses.</p>
+
+    <div class="team-grid">
+
+      <!-- Sadik -->
+      <div class="team-card lg-card reveal reveal-delay-1">
+        <div class="lg-shimmer"></div><div class="lg-sweep"></div>
+        <div class="team-photo">
+          <div class="team-photo-overlay"></div>
+          <img src="images/team-sadik.webp" alt="S M Abdullah Mehbub Sadik — Founder & CEO, The Spot"/>
+        </div>
+        <div class="team-body">
+          <div class="team-role">Founder &amp; CEO</div>
+          <div class="team-name">S M Abdullah<br/>Mehbub Sadik</div>
+          <p class="team-bio">3.5 years managing Meta campaigns for D2C and FMCG brands across Bangladesh. Handles every ad account personally — from strategy and audience targeting to daily budget decisions and creative direction. No black boxes, no middlemen.</p>
+          <div class="team-divider"></div>
+          <div class="team-stats">
+            <div>
+              <span class="team-stat-val">$1.4M+</span>
+              <div class="team-stat-key">Ad Spend</div>
+            </div>
+            <div>
+              <span class="team-stat-val">990K+</span>
+              <div class="team-stat-key">Purchases</div>
+            </div>
+            <div>
+              <span class="team-stat-val">9x</span>
+              <div class="team-stat-key">Peak ROAS</div>
+            </div>
+            <div>
+              <span class="team-stat-val">31</span>
+              <div class="team-stat-key">Ad Accounts</div>
+            </div>
+          </div>
+          <a href="https://www.linkedin.com/in/mehbubsadik/" target="_blank" class="team-link">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <!-- Shakib -->
+      <div class="team-card lg-card reveal reveal-delay-2">
+        <div class="lg-shimmer"></div><div class="lg-sweep"></div>
+        <div class="team-photo">
+          <div class="team-photo-overlay"></div>
+          <img src="images/team-shakib.webp" alt="Nazmus Shakib — Head of Business Development, The Spot"/>
+        </div>
+        <div class="team-body">
+          <div class="team-role">Head of Business Development</div>
+          <div class="team-name">Nazmus<br/>Shakib</div>
+          <p class="team-bio">Leads client acquisition, onboarding, and long-term relationship management. Ensures every brand that works with The Spot is the right fit — aligned on goals, budget, and growth expectations — before a single ad goes live.</p>
+          <div class="team-divider"></div>
+          <div class="team-stats">
+            <div>
+              <span class="team-stat-val">D2C</span>
+              <div class="team-stat-key">Specialty</div>
+            </div>
+            <div>
+              <span class="team-stat-val">FMCG</span>
+              <div class="team-stat-key">Focus</div>
+            </div>
+            <div>
+              <span class="team-stat-val">BD</span>
+              <div class="team-stat-key">Market</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- VIDEO LIGHTBOX -->
 <div id="videoLightbox" onclick="closeLightbox(event)">
   <div id="lightboxInner">
@@ -877,7 +955,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 
 
 <script>
-/* ══ CREATIVE WORK VIDEO ══ */
 function openVideo(id,type){
   var lb=document.getElementById('videoLightbox');
   var frame=document.getElementById('lightboxFrame');
@@ -901,7 +978,6 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-/* ══ WEBGL SHADER ══ */
 (function(){
   var c=document.getElementById('shader-canvas');if(!c)return;
   var gl=c.getContext('webgl')||c.getContext('experimental-webgl');if(!gl)return;
@@ -918,7 +994,6 @@ document.addEventListener('keydown',function(e){
   render();
 })();
 
-/* ══ MOBILE MENU ══ */
 var hamburger=document.getElementById('hamburger');
 var mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',function(){
@@ -932,20 +1007,17 @@ function closeMobileMenu(){
   document.body.style.overflow='';
 }
 
-/* ══ NAV SCROLL ══ */
 window.addEventListener('scroll',function(){
   var nav=document.getElementById('navbar');
   if(window.scrollY>50){nav.style.background='rgba(5,8,16,0.95)';nav.style.boxShadow='0 1px 0 rgba(255,107,26,0.1)'}
   else{nav.style.background='rgba(5,8,16,0.7)';nav.style.boxShadow='none'}
 });
 
-/* ══ SCROLL REVEAL ══ */
 var rio=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');rio.unobserve(e.target)}});
 },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){rio.observe(el)});
 
-/* ══ LG-CARD MOUSE TRACKING ══ */
 document.querySelectorAll('.lg-card').forEach(function(card){
   card.addEventListener('mousemove',function(e){
     var r=card.getBoundingClientRect();
@@ -954,7 +1026,6 @@ document.querySelectorAll('.lg-card').forEach(function(card){
   });
 });
 
-/* ══ PARALLAX ORBS ══ */
 window.addEventListener('scroll',function(){
   var sy=window.scrollY;
   var o1=document.querySelector('.orb-1'),o2=document.querySelector('.orb-2');
@@ -962,7 +1033,6 @@ window.addEventListener('scroll',function(){
   if(o2)o2.style.transform='translateY('+(-sy*0.1)+'px)';
 },{passive:true});
 
-/* ══ COUNTER ANIMATION ══ */
 function animCounter(el,opts){
   var inc=opts.target/(opts.dur/(1000/60)),cur=0;
   var t=setInterval(function(){
@@ -985,19 +1055,15 @@ var cio=new IntersectionObserver(function(entries){
 },{threshold:0.5});
 document.querySelectorAll('.metric-item').forEach(function(el){cio.observe(el)});
 
-/* ══ SLIDESHOW ══ */
 (function(){
   var track=document.getElementById('ssTrack');
   var frame=document.getElementById('ssFrame');
   var dotsWrap=document.getElementById('ssDots');
   var counter=document.getElementById('ssCounter');
   if(!track)return;
-
   var slides=track.querySelectorAll('.ss-slide');
   var total=slides.length;
-  var cur=0,timer=null,AUTO=4500,dragging=false;
-
-  /* Build dots */
+  var cur=0,timer=null,AUTO=4500;
   for(var d=0;d<total;d++){
     var btn=document.createElement('button');
     btn.className='ss-dot'+(d===0?' active':'');
@@ -1006,100 +1072,63 @@ document.querySelectorAll('.metric-item').forEach(function(el){cio.observe(el)})
     dotsWrap.appendChild(btn);
   }
   var dots=dotsWrap.querySelectorAll('.ss-dot');
-
   function updateUI(){
     dots.forEach(function(d,i){d.classList.toggle('active',i===cur)});
     counter.textContent=(cur+1)+' / '+total;
     track.style.transform='translateX(-'+(cur*100)+'%)';
   }
-
   function go(n){cur=(n+total)%total;updateUI()}
   function next(){go(cur+1)}
   function prev(){go(cur-1)}
   function start(){timer=setInterval(next,AUTO)}
   function stop(){clearInterval(timer)}
   function reset(){stop();start()}
-
   document.getElementById('ssNext').addEventListener('click',function(){next();reset()});
   document.getElementById('ssPrev').addEventListener('click',function(){prev();reset()});
-
-  /* Pause on hover (desktop) */
   frame.addEventListener('mouseenter',stop);
   frame.addEventListener('mouseleave',start);
-
-  /* ── TOUCH SWIPE ── */
   var touchStartX=null,touchStartY=null,locked=false;
-
-  frame.addEventListener('touchstart',function(e){
-    touchStartX=e.touches[0].clientX;
-    touchStartY=e.touches[0].clientY;
-    locked=false;
-    stop();
-  },{passive:true});
-
+  frame.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;locked=false;stop();},{passive:true});
   frame.addEventListener('touchmove',function(e){
     if(touchStartX===null)return;
     var dx=e.touches[0].clientX-touchStartX;
     var dy=e.touches[0].clientY-touchStartY;
-    /* Lock axis: if vertical scroll dominates, don't interfere */
-    if(!locked){
-      if(Math.abs(dy)>Math.abs(dx)){touchStartX=null;return}
-      locked=true;
-    }
+    if(!locked){if(Math.abs(dy)>Math.abs(dx)){touchStartX=null;return}locked=true;}
     e.preventDefault();
-    /* Live drag preview */
     var offset=cur*100-(dx/frame.offsetWidth*100);
-    track.style.transition='none';
-    track.style.transform='translateX(-'+offset+'%)';
+    track.style.transition='none';track.style.transform='translateX(-'+offset+'%)';
   },{passive:false});
-
   frame.addEventListener('touchend',function(e){
     if(touchStartX===null){start();return}
     var dx=e.changedTouches[0].clientX-touchStartX;
     track.style.transition='';
-    if(Math.abs(dx)>50){dx<0?next():prev()}
-    else{updateUI()}
-    touchStartX=null;locked=false;
-    reset();
+    if(Math.abs(dx)>50){dx<0?next():prev()}else{updateUI()}
+    touchStartX=null;locked=false;reset();
   },{passive:true});
-
-  /* ── CLICK DRAG (desktop mouse) ── */
   var mouseStartX=null,mouseDragged=false;
-
-  track.addEventListener('mousedown',function(e){
-    mouseStartX=e.clientX;mouseDragged=false;
-    track.style.cursor='grabbing';
-    stop();
-  });
+  track.addEventListener('mousedown',function(e){mouseStartX=e.clientX;mouseDragged=false;track.style.cursor='grabbing';stop();});
   window.addEventListener('mousemove',function(e){
     if(mouseStartX===null)return;
     var dx=e.clientX-mouseStartX;
     if(Math.abs(dx)>5)mouseDragged=true;
     var offset=cur*100-(dx/frame.offsetWidth*100);
-    track.style.transition='none';
-    track.style.transform='translateX(-'+offset+'%)';
+    track.style.transition='none';track.style.transform='translateX(-'+offset+'%)';
   });
   window.addEventListener('mouseup',function(e){
     if(mouseStartX===null)return;
     var dx=e.clientX-mouseStartX;
     track.style.transition='';track.style.cursor='';
-    if(mouseDragged&&Math.abs(dx)>60){dx<0?next():prev()}
-    else{updateUI()}
-    mouseStartX=null;mouseDragged=false;
-    reset();
+    if(mouseDragged&&Math.abs(dx)>60){dx<0?next():prev()}else{updateUI()}
+    mouseStartX=null;mouseDragged=false;reset();
   });
-
-  /* Keyboard */
   document.addEventListener('keydown',function(e){
     if(e.key==='ArrowLeft'){prev();reset()}
     if(e.key==='ArrowRight'){next();reset()}
   });
-
   updateUI();
   start();
 })();
 
-/* ══ SELECT FIX ══ */
 document.querySelectorAll('select').forEach(function(s){
   s.addEventListener('change',function(){s.classList.add('selected')});
 });
