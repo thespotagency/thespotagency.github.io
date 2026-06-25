@@ -482,6 +482,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
   .stat-card{flex:1 1 100%}
 }
 </style>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 </head>
 <body>
 
@@ -832,7 +833,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
             <label for="fmsg">Anything you want to tell us? (optional)</label>
             <textarea id="fmsg" name="message" placeholder="e.g. I sell handmade bags and want more customers from Facebook..."></textarea>
           </div>
-          <button type="submit" class="sub-btn" id="submitBtn">Yes, I Want to Talk — It's Free →</button>
+          <button type="button" class="sub-btn" id="submitBtn" data-tally-open="kdgqB6" data-tally-emoji-text="👋" data-tally-emoji-animation="wave" data-tally-auto-close="3000">Yes, I Want to Talk — It's Free →</button>
           <p class="form-note">🔒 Your info is <span>100% private</span>. We never share it with anyone.</p>
         </form>
         <div class="done" id="doneMsg">
@@ -1153,18 +1154,11 @@ document.querySelectorAll('select').forEach(function(s){
   s.addEventListener('change',function(){s.classList.add('selected')});
 });
 
-/* ══ FORM SUBMIT ══ */
-var form=document.getElementById('leadForm'),btn=document.getElementById('submitBtn');
-if(form){
-  form.addEventListener('submit',async function(e){
-    e.preventDefault();btn.textContent='Sending...';btn.disabled=true;
-    try{
-      var res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
-      if(res.ok){form.style.display='none';document.getElementById('doneMsg').style.display='block';if(typeof fbq!=='undefined')fbq('track','Lead')}
-      else{btn.textContent='Try Again';btn.disabled=false}
-    }catch{btn.textContent='Try Again';btn.disabled=false}
-  });
-}
+window.addEventListener('message',function(e){
+  if(typeof e.data==='object'&&e.data.type==='tally-form-submitted'){
+    if(typeof fbq!=='undefined')fbq('track','Lead');
+  }
+});
 </script>
 </body>
 </html>
