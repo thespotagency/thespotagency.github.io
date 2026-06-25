@@ -440,8 +440,14 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 }
 .team-link:hover{color:var(--orange);border-color:var(--glass-border-hover)}
 
-.static-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
-.static-card{position:relative;overflow:hidden;border-radius:12px;cursor:default;border:1px solid var(--glass-border);background:var(--navy-3);aspect-ratio:1/1;transition:border-color 0.3s,transform 0.35s cubic-bezier(0.175,0.885,0.32,1.6)}
+.filter-tabs{display:flex;flex-wrap:nowrap;gap:0.6rem;margin-bottom:2rem;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.filter-tabs::-webkit-scrollbar{display:none}
+.filter-tab{background:transparent;border:1px solid var(--glass-border);color:var(--white-60);padding:7px 18px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);white-space:nowrap;flex-shrink:0}
+.filter-tab:hover{border-color:var(--white-30);color:var(--white)}
+.filter-tab.active{background:var(--orange);border-color:var(--orange);color:var(--navy)}
+.static-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0}
+.static-card{position:relative;overflow:hidden;border-radius:12px;cursor:default;border:1px solid var(--glass-border);background:var(--navy-3);aspect-ratio:1/1;transition:border-color 0.3s,transform 0.35s cubic-bezier(0.175,0.885,0.32,1.6),opacity 0.3s,scale 0.3s}
+.static-card.hidden{display:none}
 .static-card:hover{border-color:var(--glass-border-hover);transform:translateY(-4px)}
 .static-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease}
 .static-card:hover img{transform:scale(1.06)}
@@ -487,6 +493,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 @media(max-width:400px){
   .hero h1{font-size:1.85rem}
   .stat-card{flex:1 1 100%}
+  .static-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -866,42 +873,44 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 
 <div class="divider"></div>
 
-<div class="divider"></div>
-
 <!-- ══ STATIC AD CREATIVES ══ -->
 <section id="graphics" style="padding:5rem 0">
   <div class="wrapper">
     <div class="section-label reveal">Static Ad Creatives</div>
     <h2 class="section-title reveal reveal-delay-1">Design work that<br/>stops the scroll.</h2>
-    <p class="section-desc reveal reveal-delay-2">Static ad creatives produced for D2C and real estate brands. Hook-first concepts, conversion-focused design.</p>
-    <div class="static-grid">
-      <div class="static-card reveal reveal-delay-1">
-        <img src="images/dmc1.webp" alt="Dhaka Mawa City — Legacy Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Legacy Hook</div></div>
-      </div>
-      <div class="static-card reveal reveal-delay-2">
-        <img src="images/dmc2.webp" alt="Dhaka Mawa City — Expressway Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Expressway</div></div>
-      </div>
-      <div class="static-card reveal reveal-delay-3">
-        <img src="images/dmc3.webp" alt="Dhaka Mawa City — Padma Bridge Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Padma Setu</div></div>
-      </div>
-      <div class="static-card reveal reveal-delay-1">
-        <img src="images/dmc4.webp" alt="Dhaka Mawa City — Commercial Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Commercial</div></div>
-      </div>
-      <div class="static-card reveal reveal-delay-2">
-        <img src="images/dmc5.webp" alt="Dhaka Mawa City — Probashi Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Probashi</div></div>
-      </div>
-      <div class="static-card reveal reveal-delay-3">
-        <img src="images/dmc6.webp" alt="Dhaka Mawa City — Land Ad" loading="lazy"/>
-        <div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static Ad</div><div class="static-card-title">Dhaka Mawa City — Thikana</div></div>
-      </div>
+    <p class="section-desc reveal reveal-delay-2">Static ad creatives produced for real estate, transport, hospitality and jewelry brands. Hook-first. Conversion-focused.</p>
+
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="dmc">Dhaka Mawa City</button>
+      <button class="filter-tab" data-filter="bolesswar">New Bolesswar</button>
+      <button class="filter-tab" data-filter="adrok">Adrok</button>
+      <button class="filter-tab" data-filter="axiom">AXIOM Jewelry</button>
+    </div>
+
+    <div class="static-grid" id="staticGrid">
+      <div class="static-card" data-client="dmc"><img src="images/dmc1.webp" alt="DMC Legacy" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Legacy Hook</div></div></div>
+      <div class="static-card" data-client="dmc"><img src="images/dmc2.webp" alt="DMC Expressway" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Expressway</div></div></div>
+      <div class="static-card" data-client="dmc"><img src="images/dmc3.webp" alt="DMC Padma" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Padma Setu</div></div></div>
+      <div class="static-card" data-client="dmc"><img src="images/dmc4.webp" alt="DMC Commercial" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Commercial</div></div></div>
+      <div class="static-card" data-client="dmc"><img src="images/dmc5.webp" alt="DMC Probashi" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Probashi</div></div></div>
+      <div class="static-card" data-client="dmc"><img src="images/dmc6.webp" alt="DMC Thikana" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Real Estate · Static</div><div class="static-card-title">Dhaka Mawa City — Thikana</div></div></div>
+      <div class="static-card" data-client="bolesswar"><img src="images/bolesswar1.webp" alt="Bolesswar VIP" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Transport · Static</div><div class="static-card-title">New Bolesswar — VIP Travel</div></div></div>
+      <div class="static-card" data-client="bolesswar"><img src="images/bolesswar2.webp" alt="Bolesswar Mention" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Transport · Static</div><div class="static-card-title">New Bolesswar — Mention Hook</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok1.webp" alt="Adrok 1" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 1</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok2.webp" alt="Adrok 2" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 2</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok3.webp" alt="Adrok 3" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 3</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok4.webp" alt="Adrok 4" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 4</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok5.webp" alt="Adrok 5" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 5</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok6.webp" alt="Adrok 6" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 6</div></div></div>
+      <div class="static-card" data-client="adrok"><img src="images/adrok7.webp" alt="Adrok 7" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Hospitality · Static</div><div class="static-card-title">Adrok Garden Resort — Ad 7</div></div></div>
+      <div class="static-card" data-client="axiom"><img src="images/axiom1.webp" alt="AXIOM 1" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Jewelry · Static</div><div class="static-card-title">AXIOM Jewelry — Ad 1</div></div></div>
+      <div class="static-card" data-client="axiom"><img src="images/axiom2.webp" alt="AXIOM 2" loading="lazy"/><div class="static-card-overlay"><div class="static-card-badge">Jewelry · Static</div><div class="static-card-title">AXIOM Jewelry — Ad 2</div></div></div>
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- ══ ABOUT US ══ -->
 <section id="about" style="padding:5rem 0">
@@ -1182,6 +1191,25 @@ document.querySelectorAll('.metric-item').forEach(function(el){cio.observe(el)})
 document.querySelectorAll('select').forEach(function(s){
   s.addEventListener('change',function(){s.classList.add('selected')});
 });
+
+(function(){
+  var tabs=document.querySelectorAll('.filter-tab');
+  var cards=document.querySelectorAll('.static-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      var f=tab.getAttribute('data-filter');
+      cards.forEach(function(card){
+        if(f==='all'||card.getAttribute('data-client')===f){
+          card.classList.remove('hidden');
+        }else{
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
 
 window.addEventListener('message',function(e){
   if(typeof e.data==='object'&&e.data.type==='tally-form-submitted'){
