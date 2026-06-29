@@ -205,5 +205,19 @@ h1{
   <a href="https://thespotagency.github.io/" class="btn-home">← Back to Website</a>
 </div>
 
+<script>
+fetch('https://hook.eu1.make.com/ude7gixgnv4xmjuf4wleuf18swpbuc9r', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({
+    event_name: 'Lead',
+    event_id: _leadID,
+    event_time: Math.floor(Date.now() / 1000),
+    action_source: 'website',
+    user_agent: navigator.userAgent,
+    page_url: window.location.href
+  })
+});
+</script>
 </body>
 </html>
