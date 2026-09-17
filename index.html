@@ -562,6 +562,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
   .stat-card{flex:1 1 100%}
   .static-grid{grid-template-columns:1fr}
 }
+
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9998;background:rgba(5,8,16,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--glass-border);padding:1.1rem 1.5rem;display:none;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap}
+.cookie-banner.show{display:flex}
+.cookie-text{font-size:13px;color:var(--white-60);line-height:1.6;flex:1;min-width:220px}
+.cookie-text strong{color:#fff}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-btn{border:none;border-radius:8px;padding:10px 20px;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s,transform 0.2s;font-family:var(--font-body)}
+.cookie-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.cookie-accept-all{background:var(--orange);color:var(--navy)}
+.cookie-essential{background:transparent;border:1px solid var(--glass-border);color:#fff}
+@media(max-width:600px){.cookie-banner{flex-direction:column;align-items:stretch;text-align:center}.cookie-actions{justify-content:center}}
 </style>
 <script type="application/ld+json">
 {
@@ -1318,6 +1329,28 @@ var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=t
     }
   });
 })();
+</script>
+
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">We use cookies to run analytics and improve your experience. <strong>Your data stays private</strong> — never sold to third parties.</div>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-essential" onclick="setCookieConsent('essential')">Essential Only</button>
+    <button class="cookie-btn cookie-accept-all" onclick="setCookieConsent('all')">Accept All</button>
+  </div>
+</div>
+<script>
+(function(){
+  try{
+    if(!localStorage.getItem('spot_cookie_consent')){
+      document.getElementById('cookieBanner').classList.add('show');
+    }
+  }catch(e){}
+})();
+function setCookieConsent(choice){
+  try{ localStorage.setItem('spot_cookie_consent', choice); }catch(e){}
+  document.getElementById('cookieBanner').classList.remove('show');
+}
 </script>
 </body>
 </html>
