@@ -212,3 +212,15 @@ document.querySelectorAll('select').forEach(function(s){
     }
   });
 })();
+
+// Back to top button
+(function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn)return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>500);
+  },{passive:true});
+  btn.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
