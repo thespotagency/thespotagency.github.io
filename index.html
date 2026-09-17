@@ -382,7 +382,53 @@ fbq('init','1358792732810002');fbq('track','PageView',{},{eventID:'pv_'+Date.now
         <div class="section-label" style="justify-content:center">Free Consultation</div>
         <h2 class="section-title">Let's talk about<br/>your business.</h2>
         <p class="section-desc">Fill this in — takes 60 seconds. We will contact you on WhatsApp within 24 hours. No cost. No pressure.</p>
-        <iframe data-tally-src="https://tally.so/embed/kdgqB6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form" style="border:none;min-height:400px"></iframe>
+        <form id="leadForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" name="name" placeholder="Full name" required/>
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Number</label>
+              <input type="tel" name="phone" placeholder="01XXXXXXXXX" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Business Name</label>
+              <input type="text" name="business_name" placeholder="Your business name" required/>
+            </div>
+            <div class="form-group">
+              <label>Business Type</label>
+              <select name="business_type" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="D2C">D2C</option>
+                <option value="FMCG">FMCG</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Hospitality/Travel">Hospitality/Travel</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Monthly Ad Budget (BDT)</label>
+            <select name="monthly_budget" required>
+              <option value="" disabled selected>Select budget range</option>
+              <option value="Under 20,000">Under ৳20,000</option>
+              <option value="20,000–50,000">৳20,000 – ৳50,000</option>
+              <option value="50,000–1,00,000">৳50,000 – ৳1,00,000</option>
+              <option value="1,00,000+">৳1,00,000+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Anything Else? (Optional)</label>
+            <textarea name="message" placeholder="Tell us a bit about your business or goals"></textarea>
+          </div>
+          <button type="submit" class="sub-btn" id="lf-submit">Get My Free Consultation</button>
+          <p id="lf-error" style="display:none;color:#ff6b6b;font-size:13px;text-align:center;margin-top:10px"></p>
+        </form>
         <p class="form-note">🔒 Your info is <span>100% private</span>. We never share it with anyone.</p>
       </div>
     </div>
