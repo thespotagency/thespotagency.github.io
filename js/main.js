@@ -23,9 +23,9 @@ document.addEventListener('keydown',function(e){
 
 (function(){
   var c=document.getElementById('shader-canvas');if(!c)return;
-  var gl=c.getContext('webgl')||c.getContext('experimental-webgl');if(!gl)return;
+  var gl=c.getContext('webgl',{alpha:true,premultipliedAlpha:true})||c.getContext('experimental-webgl',{alpha:true,premultipliedAlpha:true});if(!gl)return;
   var vS='attribute vec2 position;void main(){gl_Position=vec4(position,0.0,1.0);}';
-  var fS='precision highp float;uniform vec2 resolution;uniform float time;void main(void){vec2 uv=(gl_FragCoord.xy*2.0-resolution.xy)/min(resolution.x,resolution.y);float t=time*0.05;float lw=0.002;float intensity=0.0;for(int i=0;i<5;i++){float fi=float(i);float ring=lw*fi*fi/abs(fract(t+fi*0.01)*5.0-length(uv)+mod(uv.x+uv.y,0.2));intensity+=ring;}float rad=length(uv);vec3 teal=vec3(0.05,0.85,0.80);vec3 white=vec3(1.00,1.00,1.00);vec3 tang=vec3(1.00,0.35,0.05);vec3 ramp=mix(teal,white,smoothstep(0.0,0.42,rad));ramp=mix(ramp,tang,smoothstep(0.42,1.05,rad));vec3 color=ramp*intensity;color+=vec3(pow(intensity,3.0))*0.14;float vig=1.0-smoothstep(0.55,1.35,rad);color*=vig;gl_FragColor=vec4(color,1.0);}';
+  var fS='precision highp float;uniform vec2 resolution;uniform float time;void main(void){vec2 uv=(gl_FragCoord.xy*2.0-resolution.xy)/min(resolution.x,resolution.y);float t=time*0.05;float lw=0.002;float intensity=0.0;for(int i=0;i<5;i++){float fi=float(i);float ring=lw*fi*fi/abs(fract(t+fi*0.01)*5.0-length(uv)+mod(uv.x+uv.y,0.2));intensity+=ring;}float rad=length(uv);vec3 teal=vec3(0.05,0.85,0.80);vec3 white=vec3(1.00,1.00,1.00);vec3 tang=vec3(1.00,0.35,0.05);vec3 ramp=mix(teal,white,smoothstep(0.0,0.42,rad));ramp=mix(ramp,tang,smoothstep(0.42,1.05,rad));vec3 color=ramp*intensity;color+=vec3(pow(intensity,3.0))*0.14;float vig=1.0-smoothstep(0.55,1.35,rad);color*=vig;float alpha=clamp(intensity*vig,0.0,1.0);gl_FragColor=vec4(color*alpha,alpha);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return sh}
   var p=gl.createProgram();gl.attachShader(p,mk(gl.VERTEX_SHADER,vS));gl.attachShader(p,mk(gl.FRAGMENT_SHADER,fS));gl.linkProgram(p);gl.useProgram(p);
   var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
