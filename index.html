@@ -4,7 +4,7 @@
 <script>
 (function(){
   try{
-    if(localStorage.getItem('spot_theme')==='light'){
+    if(localStorage.getItem('spot_theme')!=='dark'){
       document.documentElement.setAttribute('data-theme','light');
     }
   }catch(e){}
