@@ -57,6 +57,15 @@
 
 html{scroll-behavior:smooth}
 
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+
 body{
   background:var(--navy);
   color:var(--white-90);
@@ -178,14 +187,12 @@ nav.scrolled{background:var(--nav-bg-scrolled);box-shadow:0 1px 0 rgba(255,107,2
   background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.08) 0%,transparent 60%);
   opacity:0;transition:opacity 0.3s;pointer-events:none;
 }
-.lg-card:hover .lg-shimmer{opacity:1}
 .lg-sweep{
   position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent,var(--orange),transparent);
   transform:scaleX(0);transform-origin:left;
   transition:transform 0.45s cubic-bezier(0.175,0.885,0.32,1.275);z-index:3;
 }
-.lg-card:hover .lg-sweep{transform:scaleX(1)}
 
 .orb{
   position:fixed;border-radius:50%;
@@ -200,12 +207,12 @@ nav.scrolled{background:var(--nav-bg-scrolled);box-shadow:0 1px 0 rgba(255,107,2
   66%{transform:translate(-20px,30px) scale(0.95)}
 }
 
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:0.1s}
-.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}
-.reveal-delay-4{transition-delay:0.4s}
+.reveal{opacity:0;transform:translateY(32px);filter:blur(4px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
+.reveal-delay-1{transition-delay:0.06s}
+.reveal-delay-2{transition-delay:0.12s}
+.reveal-delay-3{transition-delay:0.18s}
+.reveal-delay-4{transition-delay:0.24s}
 
 section{position:relative;z-index:1;padding:5rem 0}
 .wrapper{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 2.5rem}
@@ -391,9 +398,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padd
 .creative-card{cursor:pointer;overflow:hidden;border-radius:14px;position:relative;isolation:isolate;border:1px solid var(--glass-border);background:var(--glass-bg);transition:border-color 0.3s,transform 0.4s cubic-bezier(0.175,0.885,0.32,1.6)}
 .creative-card:hover{border-color:var(--glass-border-hover);transform:translateY(-3px)}
 .creative-card .lg-shimmer{position:absolute;inset:0;z-index:1;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.08) 0%,transparent 60%);opacity:0;transition:opacity 0.3s;pointer-events:none}
-.creative-card:hover .lg-shimmer{opacity:1}
 .creative-card .lg-sweep{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.45s cubic-bezier(0.175,0.885,0.32,1.275);z-index:3}
-.creative-card:hover .lg-sweep{transform:scaleX(1)}
 .creative-thumb{position:relative;aspect-ratio:16/9;background:var(--navy-3);overflow:hidden}
 .creative-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease}
 .creative-card:hover .creative-thumb img{transform:scale(1.04)}

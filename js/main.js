@@ -60,11 +60,18 @@ var rio=new IntersectionObserver(function(entries){
 },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){rio.observe(el)});
 
-document.querySelectorAll('.lg-card').forEach(function(card){
+document.querySelectorAll('.lg-card, .creative-card').forEach(function(card){
+  var ticking=false,lastX=0,lastY=0;
   card.addEventListener('mousemove',function(e){
-    var r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
-    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    lastX=e.clientX;lastY=e.clientY;
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((lastX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((lastY-r.top)/r.height*100)+'%');
+      ticking=false;
+    });
   });
 });
 
